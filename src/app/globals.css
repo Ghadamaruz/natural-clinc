@@ -1,0 +1,495 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 250, 250, 250;
+  --background-end-rgb: 255, 255, 255;
+  --primary-gradient-start: 72, 118, 255;
+  --primary-gradient-end: 100, 143, 255;
+  --secondary-gradient-start: 255, 126, 95;
+  --secondary-gradient-end: 254, 180, 123;
+  --success-gradient-start: 40, 199, 111;
+  --success-gradient-end: 72, 219, 116;
+  --warning-gradient-start: 255, 184, 0;
+  --warning-gradient-end: 255, 220, 40;
+  --danger-gradient-start: 255, 84, 84;
+  --danger-gradient-end: 255, 122, 122;
+  --info-gradient-start: 0, 184, 217;
+  --info-gradient-end: 41, 208, 225;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-arabic: 'Cairo', sans-serif;
+}
+
+[data-theme="dark"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 20, 20, 30;
+  --background-end-rgb: 30, 30, 40;
+}
+
+[data-theme="innovayt"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 40, 50, 80;
+  --background-end-rgb: 60, 70, 100;
+  --primary-gradient-start: 100, 143, 255;
+  --primary-gradient-end: 72, 118, 255;
+}
+
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+[dir="ltr"] {
+  font-family: var(--font-sans);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  min-height: 100vh;
+}
+
+/* Modern UI Elements with Curved Edges */
+.btn {
+  @apply px-4 py-2 rounded-full transition-all duration-300 font-medium text-white shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  border-radius: 12px;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    to right,
+    rgba(var(--primary-gradient-start), 1),
+    rgba(var(--primary-gradient-end), 1)
+  );
+  @apply focus:ring-blue-400;
+}
+
+.btn-secondary {
+  background: linear-gradient(
+    to right,
+    rgba(var(--secondary-gradient-start), 1),
+    rgba(var(--secondary-gradient-end), 1)
+  );
+  @apply focus:ring-orange-400;
+}
+
+.btn-success {
+  background: linear-gradient(
+    to right,
+    rgba(var(--success-gradient-start), 1),
+    rgba(var(--success-gradient-end), 1)
+  );
+  @apply focus:ring-green-400;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+  border-radius: 16px;
+}
+
+.input {
+  @apply px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300;
+  border-radius: 12px;
+}
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  border-radius: 12px;
+}
+
+.badge-primary {
+  background: linear-gradient(
+    to right,
+    rgba(var(--primary-gradient-start), 0.8),
+    rgba(var(--primary-gradient-end), 0.8)
+  );
+  @apply text-white;
+}
+
+.badge-success {
+  background: linear-gradient(
+    to right,
+    rgba(var(--success-gradient-start), 0.8),
+    rgba(var(--success-gradient-end), 0.8)
+  );
+  @apply text-white;
+}
+
+.badge-warning {
+  background: linear-gradient(
+    to right,
+    rgba(var(--warning-gradient-start), 0.8),
+    rgba(var(--warning-gradient-end), 0.8)
+  );
+  @apply text-gray-800;
+}
+
+.badge-danger {
+  background: linear-gradient(
+    to right,
+    rgba(var(--danger-gradient-start), 0.8),
+    rgba(var(--danger-gradient-end), 0.8)
+  );
+  @apply text-white;
+}
+
+/* Mobile-first responsive design */
+.container {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Sidebar and Dashboard Layout */
+.sidebar {
+  @apply fixed top-0 left-0 h-full bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 z-40;
+  width: 250px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+[dir="rtl"] .sidebar {
+  @apply left-auto right-0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.sidebar-collapsed {
+  width: 70px;
+}
+
+.main-content {
+  @apply ml-[250px] transition-all duration-300 p-6;
+}
+
+.main-content-expanded {
+  @apply ml-[70px];
+}
+
+[dir="rtl"] .main-content {
+  @apply ml-0 mr-[250px];
+}
+
+[dir="rtl"] .main-content-expanded {
+  @apply ml-0 mr-[70px];
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  [dir="rtl"] .sidebar {
+    transform: translateX(100%);
+  }
+  
+  .sidebar-mobile-open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    @apply ml-0;
+  }
+  
+  [dir="rtl"] .main-content {
+    @apply mr-0;
+  }
+}
+
+/* Doctor Card Styles */
+.doctor-card {
+  @apply card p-4 flex flex-col md:flex-row gap-4 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer;
+}
+
+.doctor-avatar {
+  @apply w-20 h-20 rounded-full object-cover mx-auto md:mx-0;
+}
+
+.doctor-info {
+  @apply flex-1;
+}
+
+.doctor-name {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
+}
+
+.doctor-specialty {
+  @apply text-sm text-gray-600 dark:text-gray-300;
+}
+
+.doctor-rating {
+  @apply flex items-center mt-1;
+}
+
+.doctor-rating-star {
+  @apply text-yellow-400;
+}
+
+.doctor-availability {
+  @apply mt-2 text-sm text-gray-600 dark:text-gray-300;
+}
+
+.doctor-actions {
+  @apply mt-3 flex flex-col sm:flex-row gap-2;
+}
+
+/* Appointment Card Styles */
+.appointment-card {
+  @apply card p-4 mb-4;
+}
+
+.appointment-header {
+  @apply flex justify-between items-start mb-3;
+}
+
+.appointment-date {
+  @apply text-sm font-medium text-gray-600 dark:text-gray-300;
+}
+
+.appointment-status {
+  @apply badge;
+}
+
+.appointment-doctor {
+  @apply flex items-center gap-3 mb-3;
+}
+
+.appointment-doctor-avatar {
+  @apply w-12 h-12 rounded-full object-cover;
+}
+
+.appointment-doctor-info {
+  @apply flex-1;
+}
+
+.appointment-doctor-name {
+  @apply text-base font-medium text-gray-900 dark:text-white;
+}
+
+.appointment-doctor-specialty {
+  @apply text-sm text-gray-600 dark:text-gray-300;
+}
+
+.appointment-details {
+  @apply mt-3 text-sm text-gray-600 dark:text-gray-300;
+}
+
+.appointment-actions {
+  @apply mt-4 flex flex-wrap gap-2;
+}
+
+/* Form Elements */
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+}
+
+.form-input {
+  @apply input w-full;
+}
+
+.form-select {
+  @apply input w-full appearance-none bg-no-repeat;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+[dir="rtl"] .form-select {
+  background-position: left 0.5rem center;
+  padding-right: 0.75rem;
+  padding-left: 2.5rem;
+}
+
+.form-checkbox {
+  @apply rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+}
+
+.form-radio {
+  @apply rounded-full border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+}
+
+/* File Upload */
+.file-upload {
+  @apply relative border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 text-center cursor-pointer transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-400;
+}
+
+.file-upload-input {
+  @apply absolute inset-0 w-full h-full opacity-0 cursor-pointer;
+}
+
+.file-upload-icon {
+  @apply mx-auto h-12 w-12 text-gray-400;
+}
+
+.file-upload-text {
+  @apply mt-2 text-sm text-gray-600 dark:text-gray-300;
+}
+
+.file-upload-hint {
+  @apply text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+/* File List */
+.file-item {
+  @apply flex items-center p-3 border border-gray-200 dark:border-gray-700 rounded-xl mb-2 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700;
+}
+
+.file-icon {
+  @apply flex-shrink-0 h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-300;
+}
+
+.file-info {
+  @apply ml-3 flex-1 min-w-0;
+}
+
+[dir="rtl"] .file-info {
+  @apply ml-0 mr-3;
+}
+
+.file-name {
+  @apply text-sm font-medium text-gray-900 dark:text-white truncate;
+}
+
+.file-meta {
+  @apply text-xs text-gray-500 dark:text-gray-400;
+}
+
+.file-actions {
+  @apply ml-4 flex-shrink-0 flex;
+}
+
+[dir="rtl"] .file-actions {
+  @apply ml-0 mr-4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Accessibility */
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+}
+
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-800;
+}
+
+/* RTL specific adjustments */
+[dir="rtl"] .ml-1 { @apply ml-0 mr-1; }
+[dir="rtl"] .ml-2 { @apply ml-0 mr-2; }
+[dir="rtl"] .ml-3 { @apply ml-0 mr-3; }
+[dir="rtl"] .ml-4 { @apply ml-0 mr-4; }
+[dir="rtl"] .mr-1 { @apply mr-0 ml-1; }
+[dir="rtl"] .mr-2 { @apply mr-0 ml-2; }
+[dir="rtl"] .mr-3 { @apply mr-0 ml-3; }
+[dir="rtl"] .mr-4 { @apply mr-0 ml-4; }
+[dir="rtl"] .pl-1 { @apply pl-0 pr-1; }
+[dir="rtl"] .pl-2 { @apply pl-0 pr-2; }
+[dir="rtl"] .pl-3 { @apply pl-0 pr-3; }
+[dir="rtl"] .pl-4 { @apply pl-0 pr-4; }
+[dir="rtl"] .pr-1 { @apply pr-0 pl-1; }
+[dir="rtl"] .pr-2 { @apply pr-0 pl-2; }
+[dir="rtl"] .pr-3 { @apply pr-0 pl-3; }
+[dir="rtl"] .pr-4 { @apply pr-0 pl-4; }
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+  .btn {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  .card {
+    @apply p-3;
+  }
+  
+  .doctor-card {
+    @apply flex-col;
+  }
+  
+  .doctor-avatar {
+    @apply w-16 h-16 mx-auto;
+  }
+  
+  .doctor-info {
+    @apply text-center;
+  }
+  
+  .doctor-actions {
+    @apply flex-col;
+  }
+  
+  .appointment-header {
+    @apply flex-col gap-2;
+  }
+  
+  .appointment-doctor {
+    @apply flex-col items-center text-center;
+  }
+}
